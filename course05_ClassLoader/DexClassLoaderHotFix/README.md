@@ -7,6 +7,7 @@ jar cvf com/cnting/dexclassloaderhotfix/say.jar com/cnting/dexclassloaderhotfix/
 #### 2. 将jar文件编译成dex
 之前一开始是在.class同级目录下生成jar，会一直报下面这个错误，所以一定要改到`src`目录下去生成
 ![error1](https://github.com/cnting/LagouCourse/blob/master/course05_ClassLoader/DexClassLoaderHotFix/res/1.jpg)
+
 生成dex命令：
 ```shell
 ~/Library/Android/sdk/build-tools/29.0.2/dx --dex --output=say_hotfix.jar com/cnting/dexclassloaderhotfix/say.jar
