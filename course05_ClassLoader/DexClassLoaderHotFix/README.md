@@ -6,7 +6,7 @@ jar cvf com/cnting/dexclassloaderhotfix/say.jar com/cnting/dexclassloaderhotfix/
 
 #### 2. 将jar文件编译成dex
 之前一开始是在.class同级目录下生成jar，会一直报下面这个错误，所以一定要改到`src`目录下去生成
-![e04d6434be3880e04508ba0f560a5125.png](evernotecid://F5FB82AE-9E40-4E10-9980-F9696800227E/wwwevernotecom/101867128/ENResource/p2546)
+![error1](https://github.com/cnting/LagouCourse/blob/master/course05_ClassLoader/DexClassLoaderHotFix/res/1.jpg)
 生成dex命令：
 ```shell
 ~/Library/Android/sdk/build-tools/29.0.2/dx --dex --output=say_hotfix.jar com/cnting/dexclassloaderhotfix/say.jar
@@ -40,11 +40,16 @@ btn.setOnClickListener {
         }
 ```
 报错如下：
-![83af0e75e9cac373e088179d302b8cbe.png](evernotecid://F5FB82AE-9E40-4E10-9980-F9696800227E/wwwevernotecom/101867128/ENResource/p2548)
+![error2](https://github.com/cnting/LagouCourse/blob/master/course05_ClassLoader/DexClassLoaderHotFix/res/2.jpg)
+
 原因在这里：[Android插件化框架系列之类加载器](https://www.jianshu.com/p/57fc356b9093)
-![82c7758e13daf1c166ad5e913c211c8a.png](evernotecid://F5FB82AE-9E40-4E10-9980-F9696800227E/wwwevernotecom/101867128/ENResource/p2549)@w=600
+
+![error3](https://github.com/cnting/LagouCourse/blob/master/course05_ClassLoader/DexClassLoaderHotFix/res/3.jpg)
+
 解决方式：[热修复实现：ClassLoader 方式的实现](https://jaeger.itscoder.com/android/2016/09/20/nuva-source-code-analysis.html)
-![181715255021ee12052d871ea8f80667.png](evernotecid://F5FB82AE-9E40-4E10-9980-F9696800227E/wwwevernotecom/101867128/ENResource/p2550)@w=500
+
+![error4](https://github.com/cnting/LagouCourse/blob/master/course05_ClassLoader/DexClassLoaderHotFix/res/4.jpg)
+
 主要原理就是将补丁包的dex插到dexElements的最前面，让它优先加载
 ```java
 class DexUtil {
